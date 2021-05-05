@@ -1,0 +1,59 @@
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+https://github.com/R0ckie/Laboratory-7/blob/main/LinAlg_LAb7.ipynb
+A = np.array( [[1,1,1],[2,2,2],[3,3,3]])
+B = np.array( [[2,4,6],[8,8,6],[4,2,9]])
+C = np.identity(3)
+D = np.array( [[9,9,9],[5,5,5],[3,4,5]])
+E = np.zeros([3,3])
+F = np.ones([3,4])
+
+
+def DistributiveProp (matrix1, matrix2, matrix3):
+  DPa_bc = matrix1.dot(matrix2 + matrix3)
+  print("Distributive: \n" , DPa_bc)
+  print('\n')
+  DPab_c = matrix3.dot(matrix2 + matrix1)
+  print(DPab_c)
+  print('\n')
+DistributiveProp (A,B,D)
+
+def AssociativeProp(matrix1, matrix2, matrix3):
+   
+  APa_bc = matrix1.dot(matrix2.dot(matrix3))
+  print("Associative : \n",  APa_bc)
+  print('\n')
+  APab_c =(matrix1.dot(matrix2)).dot(matrix3)
+  print(APab_c)
+  print('\n')  
+AssociativeProp(A,B,C)
+
+def notCommutativeProp (matrix1,matrix2):
+  
+  notCom_ab = np.dot(matrix1,matrix2)
+  print("Not Commutative: \n" , notCom_ab)
+  print('\n')
+  notCom_ba = np.dot(matrix2,matrix1)
+  print(notCom_ba)
+  print('\n')  
+notCommutativeProp(A,B)
+
+def MultiplicativeProp (matrix1, I):
+  multiId = np.dot(matrix1, I)
+  print("Mutiplicative Identity: \n", multiId)
+  print('\n')  
+MultiplicativeProp(B,C)
+
+def MultiplicativeZero (matrix1, Zero):
+  multiIdZero = np.dot(matrix1, Zero)
+  print("Mutiplicative Identity Zero: \n",multiIdZero)
+  print('\n')  
+MultiplicativeZero(A,E)
+
+def DimensionProp (matrix1, matrix2):
+  d1 = matrix1.shape[0]
+  d2 = matrix2.shape[1]
+  print("Dimension Property: \n", d1,d2)
+DimensionProp(B,C)
